@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import styles from './ShowComments.module.css'
 
 
 
@@ -20,24 +21,24 @@ function ShowComments({ allComments, loadComments }) {
 
 
     return (
-        <div>
+        <div className={styles.show_container}>
             <ul>
                 {
                     allComments.map(c => (
                         <div key={c.id}>
-                            <div>
+                            <div className={styles.show_mail}>
                                 {c.email}
                             </div>
-                            <div>
+                            <div className={styles.show_comment}>
                                 {c.comment}
                             </div>
-                            <div>
+                            <div className={styles.show_links}>
                                 <Link to={`/edit/${c.id}`}>
                                     Edit
                                 </Link>
-                                <button onClick={() => handleDelete(c.id)}>
+                                <Link onClick={() => handleDelete(c.id)}>
                                     Delete
-                                </button>
+                                </Link>
                             </div>
                         </div>))
                 }
